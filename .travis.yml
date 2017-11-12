@@ -10,7 +10,7 @@ addons:
   sonarcloud:
     organization: "erudika"
     token:
-      secure: "ht8JxEylgDlCD+CN+avsaV7aoy8m23+9onpF/u1uJ/GRwfvitJFY3/6yrn4DhqT5bJuncNGyR9yuhHqBTQV6dEO6lt0t7+FFtW6vR81RmR59XfGUnfuCcAASS6ymuxnbapfuCFAx3RapTEKfpBkmq5ch+83HWwcv7YEn+oG31DRZI9ghSBWMsNKdQmWR4PXCb+jMc6ZhzmQs0caRUbo/13fFsAOKnyzF+9vK3Fpe+D+PL8eUulxjByAa86h6ru5Z+68J+GSBjms9VSRnzQdblEVLD3A1yjEIA19UEuRBeWHM3M75qLQG54XL38nVPfxQU8w/xHEyJnw7cM+6d4idlt06wAUgV7l0H7ZRl7//f7pFM4uxtpZwjp5fqxQIeW/944wb2d0Pgo/OiQvr1iqha4uQd3DJ81y06qIt05IR72aY/GAvtE07UlJwvzlecsbfhZdAJPEQjhb9lx2p2ozhdF+3LxihkdAokpSPO/+7nVQUklaUga8XkOzZoh9U56DsIQGQGO3MkW0qk7LLF7PNQ8bQdi1bofVFQ5zfsNZEVMThvtMhFiSVKKJj5b77tICHUF/i2Z9VBJ9mFPlGtn9Bf5M3Apnl4cAhI8Itp7Ni5ft2RTYFA0OstxVd0wJtKn8yCtyfRWiAaA8bGF2xiO8vfAY+OWO6jKW+UEz1HCnDyl8="
+      secure: "v+laBYW6JF9tyL4Oc0xPB41Kjde4JOUlfWqyUnungrj9bGTG2yOWTGeCUoQgGGYpdHzfTQMtD73Y0JaNDyQNqCcfsixqYORD9OvPcm6MPP/5+peBHbPoxRx6riqQfim/bX+dTtXJlDo6FX5iLRCVni4j8mF4wzGhYzlpTwiQ5YV+o9RGbke0y+mQcMnPfsC7BZU9oFuDBkDFv4QR2JofKD5iMbvxlzyKy9hW/hcpleQrXjHuhhUnSrUL1hKAHWS66X1UCsa6aTb0n8bOV6IqWjWsqwy5Gs9/5Op4pZx5rLRbkX9d8xWxgxbvKj759D6doCf7ymIyB05i1wSruWsdUgs6XaJmPHnN3IvqRlW5CEFxN5eDB1FDNBnJUkt+95Fd0YAIi9pt39JraBug8Vc9OBVc/m8qpasfamzKTPNKb+cLLIEKg7I3W69BHUUQgmCESGzqojrsWSNPUcorPg24a///J2+6ORJcO6501RH8DK5/ImVwf4z9QPXsoHY+0W48vExug6s3x7DGX2To73gABlGTYxrYvw+27/L1EF5hR2NgR6ZEo7Ar4cd/iPD2kc+IosSp7b92q/m3Zy9VgKmXzEWvOv3k4Q8hmUKw04djKWVBNO9U3GpGf/D4JqLMzX5/bV8sV+jAeXNdytvptTDqBid+JzGWJhGqs2M4OQY5Ivo="
 cache:
   directories:
     - '$HOME/.m2/repository'
@@ -19,7 +19,7 @@ notifications:
   email: false
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/04820972e9b664f3140c
+      - https://webhooks.gitter.im/e/730c78c6f9b54f9cb959
     on_success: change
     on_failure: always
     on_start: never
