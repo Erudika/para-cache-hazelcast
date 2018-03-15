@@ -80,8 +80,8 @@ public final class HazelcastUtils {
 				cfg.setProperty("hazelcast.discovery.public.ip.enabled", "true");
 
 				Map<String, Comparable> awsConfig = new HashMap<>();
-				awsConfig.put("access-key", Config.AWS_ACCESSKEY);
-				awsConfig.put("secret-key", Config.AWS_SECRETKEY);
+				awsConfig.put("access-key", Config.getConfigParam("aws_access_key", System.getenv("AWS_ACCESS_KEY_ID")));
+				awsConfig.put("secret-key", Config.getConfigParam("aws_secret_key", System.getenv("AWS_SECRET_ACCESS_KEY")));
 				awsConfig.put("region", Config.AWS_REGION);
 				awsConfig.put("host-header", "ec2.amazonaws.com");
 				awsConfig.put("security-group-name", Config.getConfigParam("hc.discovery_group", "hazelcast"));
