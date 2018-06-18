@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>com.erudika</groupId>
 			<artifactId>para-core</artifactId>
-			<version>1.29.0</version>
+			<version>1.29.2</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -69,7 +69,7 @@
 		<dependency>
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast</artifactId>
-			<version>3.9.3</version>
+			<version>3.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.hazelcast</groupId>
@@ -97,7 +97,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -202,7 +202,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.3.0.603</version>
+				<version>3.4.0.905</version>
 			</plugin>
 		</plugins>
 	</build>
