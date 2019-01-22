@@ -58,8 +58,7 @@ public final class HazelcastUtils {
 			}
 			com.hazelcast.config.Config cfg = new com.hazelcast.config.Config();
 			cfg.setInstanceName(getNodeName());
-			cfg.getGroupConfig().setName(Config.CLUSTER_NAME).
-					setPassword(Config.getConfigParam("hc.password", "hcpasswd"));
+			cfg.getGroupConfig().setName(Config.CLUSTER_NAME);
 			cfg.getManagementCenterConfig().
 					setEnabled(Config.getConfigBoolean("hc.mancenter_enabled", !Config.IN_PRODUCTION)).
 					setUrl(Config.getConfigParam("hc.mancenter_url", "http://localhost:8001/mancenter"));

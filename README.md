@@ -46,7 +46,6 @@ para.hc.max_size = 25
 para.hc.jmx_enabled	= true.
 para.hc.ec2_discovery_enabled	= true.
 para.hc.discovery_group	= "hazelcast"
-para.hc.password = "hcpasswd".
 para.hc.mancenter_enabled	= false.
 para.hc.mancenter_url	= "http://localhost:8001/mancenter"
 ```
