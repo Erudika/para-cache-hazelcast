@@ -19,7 +19,7 @@ package com.erudika.para.cache;
 
 import com.erudika.para.utils.Config;
 import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;

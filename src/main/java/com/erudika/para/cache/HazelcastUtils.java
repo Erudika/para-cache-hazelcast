@@ -23,11 +23,11 @@ import com.erudika.para.utils.Config;
 import com.hazelcast.config.AwsConfig;
 import com.hazelcast.config.DiscoveryConfig;
 import com.hazelcast.config.DiscoveryStrategyConfig;
+import com.hazelcast.config.EvictionConfig;
 import com.hazelcast.config.EvictionPolicy;
 import com.hazelcast.config.JoinConfig;
 import com.hazelcast.config.MapConfig;
-import com.hazelcast.config.MaxSizeConfig;
-import static com.hazelcast.config.MaxSizeConfig.MaxSizePolicy.USED_HEAP_PERCENTAGE;
+import com.hazelcast.config.MaxSizePolicy;
 import com.hazelcast.config.MulticastConfig;
 import com.hazelcast.config.NetworkConfig;
 import com.hazelcast.config.TcpIpConfig;
@@ -61,17 +61,13 @@ public final class HazelcastUtils {
 			}
 			com.hazelcast.config.Config cfg = new com.hazelcast.config.Config();
 			cfg.setInstanceName(getNodeName());
-			cfg.getGroupConfig().setName(Config.CLUSTER_NAME);
-			cfg.getManagementCenterConfig().
-					setEnabled(Config.getConfigBoolean("hc.mancenter_enabled", !Config.IN_PRODUCTION)).
-					setUrl(Config.getConfigParam("hc.mancenter_url", "http://localhost:8001/mancenter"));
+			cfg.setClusterName(Config.CLUSTER_NAME);
 
 			MapConfig mapcfg = new MapConfig("default");
-			mapcfg.setEvictionPolicy(getEvictionPolicy());
+			mapcfg.setEvictionConfig(getEvictionPolicy());
 			mapcfg.setTimeToLiveSeconds(Config.getConfigInt("hc.ttl_seconds", 3600));
 			mapcfg.setMaxIdleSeconds(mapcfg.getTimeToLiveSeconds() * 2);
 	//			mapcfg.setMapStoreConfig(new MapStoreConfig().setEnabled(false).setClassName(NODE_NAME));
-			mapcfg.setMaxSizeConfig(getMaxSize());
 			cfg.addMapConfig(mapcfg);
 			cfg.setProperty("hazelcast.jmx", Boolean.toString(isJMXOn()));
 			cfg.setProperty("hazelcast.logging.type", "slf4j");
@@ -129,15 +125,12 @@ public final class HazelcastUtils {
 		return Config.PARA.concat("-hc-").concat(Config.WORKER_ID);
 	}
 
-	private static EvictionPolicy getEvictionPolicy() {
-		return "LFU".equals(Config.getConfigParam("hc.eviction_policy", "LRU")) ?
-				EvictionPolicy.LFU : EvictionPolicy.LRU;
-	}
-
-	private static MaxSizeConfig getMaxSize() {
-		return new MaxSizeConfig().
-				setSize(Config.getConfigInt("hc.max_size", 25)).
-				setMaxSizePolicy(USED_HEAP_PERCENTAGE);
+	private static EvictionConfig getEvictionPolicy() {
+		return new EvictionConfig()
+				.setMaxSizePolicy(MaxSizePolicy.PER_NODE)
+				.setSize(Config.getConfigInt("hc.max_size", 5000))
+				.setEvictionPolicy("LFU".equals(Config.getConfigParam("hc.eviction_policy", "LRU")) ?
+						EvictionPolicy.LFU : EvictionPolicy.LRU);
 	}
 
 	private static boolean isJMXOn() {

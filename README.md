@@ -42,12 +42,10 @@ para.hc.async_enabled	= false.
 para.hc.eviction_policy	= "LRU".
 para.hc.eviction_percentage	= 25.
 para.hc.ttl_seconds	= 3600
-para.hc.max_size = 25
+para.hc.max_size = 5000
 para.hc.jmx_enabled	= true.
 para.hc.ec2_discovery_enabled	= true.
 para.hc.discovery_group	= "hazelcast"
-para.hc.mancenter_enabled	= false.
-para.hc.mancenter_url	= "http://localhost:8001/mancenter"
 ```
 
 Finally, set the config property:
@@ -59,7 +57,7 @@ This tells Para to use the Hazelcast cache implementation instead of the default
 
 ### Requirements
 
-- Hazelcast
+- Hazelcast (v1.36.0+ uses Hazelcast v4.x, prior versions use v3.x)
 - [Para Core](https://github.com/Erudika/para)
 
 ## License
