@@ -47,6 +47,13 @@ public final class HazelcastUtils {
 
 	private static HazelcastInstance hcInstance;
 
+	static {
+		// Fix for exceptions from Spring Boot when using a different MongoDB host than localhost.
+		System.setProperty("spring.autoconfigure.exclude", String.join(",",
+				System.getProperty("spring.autoconfigure.exclude", ""),
+				"org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration"));
+	}
+
 	private HazelcastUtils() { }
 
 	/**
