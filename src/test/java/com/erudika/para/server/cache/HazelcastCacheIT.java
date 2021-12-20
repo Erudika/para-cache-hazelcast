@@ -15,7 +15,7 @@
  *
  * For issues and patches go to: https://github.com/erudika
  */
-package com.erudika.para.cache;
+package com.erudika.para.server.cache;
 
 import org.junit.AfterClass;
 

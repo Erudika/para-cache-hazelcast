@@ -15,11 +15,11 @@
  *
  * For issues and patches go to: https://github.com/erudika
  */
-package com.erudika.para.cache;
+package com.erudika.para.server.cache;
 
-import com.erudika.para.DestroyListener;
-import com.erudika.para.Para;
-import com.erudika.para.utils.Config;
+import com.erudika.para.core.listeners.DestroyListener;
+import com.erudika.para.core.utils.Para;
+import com.erudika.para.core.utils.Config;
 import com.hazelcast.config.AwsConfig;
 import com.hazelcast.config.DiscoveryConfig;
 import com.hazelcast.config.DiscoveryStrategyConfig;

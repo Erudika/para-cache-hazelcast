@@ -15,9 +15,10 @@
  *
  * For issues and patches go to: https://github.com/erudika
  */
-package com.erudika.para.cache;
+package com.erudika.para.server.cache;
 
-import com.erudika.para.utils.Config;
+import com.erudika.para.core.cache.Cache;
+import com.erudika.para.core.utils.Config;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import java.util.Collections;

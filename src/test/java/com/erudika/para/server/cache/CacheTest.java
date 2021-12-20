@@ -15,8 +15,9 @@
  *
  * For issues and patches go to: https://github.com/erudika
  */
-package com.erudika.para.cache;
+package com.erudika.para.server.cache;
 
+import com.erudika.para.core.cache.Cache;
 import com.erudika.para.core.User;
 import java.util.ArrayList;
 import java.util.HashMap;
