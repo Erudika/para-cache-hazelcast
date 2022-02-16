@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2021 Erudika. https://erudika.com
+ * Copyright 2013-2022 Erudika. https://erudika.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 package com.erudika.para.server.cache;
 
 import com.erudika.para.core.cache.Cache;
-import com.erudika.para.core.utils.Config;
+import com.erudika.para.core.utils.Para;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import java.util.Collections;
@@ -45,7 +45,7 @@ public class HazelcastCache implements Cache {
 	private static final Logger logger = LoggerFactory.getLogger(HazelcastCache.class);
 
 	static {
-		if (Config.isCacheEnabled()) {
+		if (Para.getConfig().isCacheEnabled()) {
 			HazelcastUtils.getClient();
 		}
 	}
@@ -206,49 +206,49 @@ public class HazelcastCache implements Cache {
 	 * @return true if asynchronous caching is enabled.
 	 */
 	private boolean isAsyncEnabled() {
-		return Config.getConfigBoolean("hc.async_enabled", false);
+		return Para.getConfig().getConfigBoolean("hc.async_enabled", false);
 	}
 
 	////////////////////////////////////////////////////
 
 	@Override
 	public boolean contains(String id) {
-		return contains(Config.getRootAppIdentifier(), id);
+		return contains(Para.getConfig().getRootAppIdentifier(), id);
 	}
 
 	@Override
 	public <T> void put(String id, T object) {
-		put(Config.getRootAppIdentifier(), id, object);
+		put(Para.getConfig().getRootAppIdentifier(), id, object);
 	}
 
 	@Override
 	public <T> void putAll(Map<String, T> objects) {
-		putAll(Config.getRootAppIdentifier(), objects);
+		putAll(Para.getConfig().getRootAppIdentifier(), objects);
 	}
 
 	@Override
 	public <T> T get(String id) {
-		return get(Config.getRootAppIdentifier(), id);
+		return get(Para.getConfig().getRootAppIdentifier(), id);
 	}
 
 	@Override
 	public <T> Map<String, T> getAll(List<String> ids) {
-		return getAll(Config.getRootAppIdentifier(), ids);
+		return getAll(Para.getConfig().getRootAppIdentifier(), ids);
 	}
 
 	@Override
 	public void remove(String id) {
-		remove(Config.getRootAppIdentifier(), id);
+		remove(Para.getConfig().getRootAppIdentifier(), id);
 	}
 
 	@Override
 	public void removeAll() {
-		removeAll(Config.getRootAppIdentifier());
+		removeAll(Para.getConfig().getRootAppIdentifier());
 	}
 
 	@Override
 	public void removeAll(List<String> ids) {
-		removeAll(Config.getRootAppIdentifier(), ids);
+		removeAll(Para.getConfig().getRootAppIdentifier(), ids);
 	}
 
 }
