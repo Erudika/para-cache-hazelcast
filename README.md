@@ -38,18 +38,17 @@ WAR file `para-x.y.z.war`. Para will look for plugins inside `lib` and pick up t
 
 Here are all the configuration properties for this plugin (these go inside your `application.conf`):
 ```ini
-para.hc.async_enabled	= false.
-para.hc.eviction_policy	= "LRU".
-para.hc.eviction_percentage	= 25.
-para.hc.ttl_seconds	= 3600
+para.hc.async_enabled = false
+para.hc.eviction_policy = "LRU"
+para.hc.eviction_percentage = 25
+para.hc.ttl_seconds = 3600
 para.hc.max_size = 5000
-para.hc.jmx_enabled	= true.
-para.hc.ec2_discovery_enabled	= true.
-para.hc.discovery_group	= "hazelcast"
+para.hc.ec2_discovery_enabled = true
+para.hc.discovery_group = "hazelcast"
 ```
 
 Finally, set the config property:
-```
+```ini
 para.cache = "HazelcastCache"
 ```
 This could be a Java system property or part of a `application.conf` file on the classpath.

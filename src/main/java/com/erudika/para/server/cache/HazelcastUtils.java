@@ -18,8 +18,8 @@
 package com.erudika.para.server.cache;
 
 import com.erudika.para.core.listeners.DestroyListener;
-import com.erudika.para.core.utils.Para;
 import com.erudika.para.core.utils.Config;
+import com.erudika.para.core.utils.Para;
 import com.hazelcast.config.AwsConfig;
 import com.hazelcast.config.DiscoveryConfig;
 import com.hazelcast.config.DiscoveryStrategyConfig;
@@ -72,7 +72,7 @@ public final class HazelcastUtils {
 
 			MapConfig mapcfg = new MapConfig("default");
 			mapcfg.setEvictionConfig(getEvictionPolicy());
-			mapcfg.setTimeToLiveSeconds(Para.getConfig().getConfigInt("hc.ttl_seconds", 3600));
+			mapcfg.setTimeToLiveSeconds(Para.getConfig().hazelcastTtlSec());
 			mapcfg.setMaxIdleSeconds(mapcfg.getTimeToLiveSeconds() * 2);
 	//			mapcfg.setMapStoreConfig(new MapStoreConfig().setEnabled(false).setClassName(NODE_NAME));
 			cfg.addMapConfig(mapcfg);
@@ -80,16 +80,16 @@ public final class HazelcastUtils {
 			cfg.setProperty("hazelcast.logging.type", "slf4j");
 			cfg.setProperty("hazelcast.health.monitoring.level", "SILENT");
 
-			if (Para.getConfig().inProduction() && Para.getConfig().getConfigBoolean("hc.ec2_discovery_enabled", true)) {
+			if (Para.getConfig().inProduction() && Para.getConfig().hazelcastEc2DiscoveryEnabled()) {
 				cfg.setProperty("hazelcast.discovery.enabled", "true");
 				cfg.setProperty("hazelcast.discovery.public.ip.enabled", "true");
 
 				Map<String, Comparable> awsConfig = new HashMap<>();
-				awsConfig.put("access-key", Para.getConfig().getConfigParam("aws_access_key", System.getenv("AWS_ACCESS_KEY_ID")));
-				awsConfig.put("secret-key", Para.getConfig().getConfigParam("aws_secret_key", System.getenv("AWS_SECRET_ACCESS_KEY")));
+				awsConfig.put("access-key", Para.getConfig().hazelcastAwsAccessKey());
+				awsConfig.put("secret-key", Para.getConfig().hazelcastAwsSecretKey());
 				awsConfig.put("region", new DefaultAwsRegionProviderChain().getRegion().id());
 				awsConfig.put("host-header", "ec2.amazonaws.com");
-				awsConfig.put("security-group-name", Para.getConfig().getConfigParam("hc.discovery_group", "hazelcast"));
+				awsConfig.put("security-group-name", Para.getConfig().hazelcastEc2DiscoveryGroup());
 
 				DiscoveryConfig ec2DiscoveryConfig = new DiscoveryConfig();
 				ec2DiscoveryConfig.addDiscoveryStrategyConfig(
@@ -135,13 +135,13 @@ public final class HazelcastUtils {
 	private static EvictionConfig getEvictionPolicy() {
 		return new EvictionConfig()
 				.setMaxSizePolicy(MaxSizePolicy.PER_NODE)
-				.setSize(Para.getConfig().getConfigInt("hc.max_size", 5000))
-				.setEvictionPolicy("LFU".equals(Para.getConfig().getConfigParam("hc.eviction_policy", "LRU")) ?
+				.setSize(Para.getConfig().hazelcastMaxCacheSize())
+				.setEvictionPolicy("LFU".equals(Para.getConfig().hazelcastEvictionPolicy()) ?
 						EvictionPolicy.LFU : EvictionPolicy.LRU);
 	}
 
 	private static boolean isJMXOn() {
-		return Para.getConfig().getConfigBoolean("hc.jmx_enabled", true);
+		return Para.getConfig().metricsJmxEnabled();
 	}
 
 }
