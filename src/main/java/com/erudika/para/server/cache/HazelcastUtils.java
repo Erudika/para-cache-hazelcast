@@ -35,7 +35,6 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import java.util.HashMap;
 import java.util.Map;
-import software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain;
 
 /**
  * Helper functions for {@link HazelcastCache}.
@@ -87,7 +86,7 @@ public final class HazelcastUtils {
 				Map<String, Comparable> awsConfig = new HashMap<>();
 				awsConfig.put("access-key", Para.getConfig().hazelcastAwsAccessKey());
 				awsConfig.put("secret-key", Para.getConfig().hazelcastAwsSecretKey());
-				awsConfig.put("region", new DefaultAwsRegionProviderChain().getRegion().id());
+				awsConfig.put("region", Para.getConfig().hazelcastAwsRegion());
 				awsConfig.put("host-header", "ec2.amazonaws.com");
 				awsConfig.put("security-group-name", Para.getConfig().hazelcastEc2DiscoveryGroup());
 
