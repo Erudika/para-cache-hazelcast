@@ -17,8 +17,7 @@
  */
 package com.erudika.para.server.cache;
 
-import org.junit.AfterClass;
-
+import org.junit.jupiter.api.AfterAll;
 /**
  *
  * @author Alex Bogdanovski [alex@erudika.com]
@@ -29,7 +28,7 @@ public class HazelcastCacheIT extends CacheTest {
 		super(new HazelcastCache());
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDownClass() {
 		HazelcastUtils.shutdownClient();
 	}
