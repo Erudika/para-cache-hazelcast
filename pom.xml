@@ -4,7 +4,7 @@
 
 	<groupId>com.erudika</groupId>
 	<artifactId>para-cache-hazelcast</artifactId>
-	<version>1.41.4-SNAPSHOT</version>
+	<version>1.41.4</version>
 
 	<packaging>jar</packaging>
 	<name>Para Hazelcast Cache</name>
@@ -40,7 +40,7 @@
 		<connection>scm:git:https://github.com/erudika/para-cache-hazelcast.git</connection>
 		<developerConnection>scm:git:https://github.com/erudika/para-cache-hazelcast.git</developerConnection>
 		<url>https://github.com/erudika/para-cache-hazelcast</url>
-		<tag>HEAD</tag>
+		<tag>1.41.4</tag>
 	</scm>
 
 	<issueManagement>
