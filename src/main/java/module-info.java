@@ -22,7 +22,6 @@ module com.erudika.para.server.cache.hazelcast {
 	requires com.fasterxml.jackson.databind;
 	requires org.slf4j;
 	requires com.hazelcast.core;
-	requires software.amazon.awssdk.regions;
 	exports com.erudika.para.server.cache;
 	provides com.erudika.para.core.cache.Cache with com.erudika.para.server.cache.HazelcastCache;
 }
