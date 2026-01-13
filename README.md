@@ -3,8 +3,7 @@
 
 > ### Hazelcast Cache plugin for Para
 
-[![Build Status](https://travis-ci.org/Erudika/para-cache-hazelcast.svg?branch=master)](https://travis-ci.org/Erudika/para-cache-hazelcast)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.erudika/para-cache-hazelcast/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.erudika/para-cache-hazelcast)
+[![Maven Central Version](https://img.shields.io/maven-central/v/com.erudika/para-cache-hazelcast)](https://central.sonatype.com/artifact/com.erudika/para-cache-hazelcast)
 [![Join the chat at https://gitter.im/Erudika/para](https://badges.gitter.im/Erudika/para.svg)](https://gitter.im/Erudika/para?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## What is this?
